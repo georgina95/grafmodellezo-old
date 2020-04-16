@@ -1,0 +1,54 @@
+{
+	"layout": "OneColumn",
+	"homeTiles": [{
+		"groupTitle": "graphs",
+		"expanded": true,
+		"tiles": [{
+			"header": "graph1",
+			"subheader": "Subtitle",
+			"unit": "EUR",
+			"footer": "Current Quarter",
+			"image": "sap-icon://home-share",
+			"route": "Graph1"
+		}, {
+			"header": "graph2",
+			"subheader": "Subtitle",
+			"unit": "EUR",
+			"footer": "Current Quarter",
+			"image": "sap-icon://home-share",
+			"route": "Graph2"
+		}, {
+			"header": "graph3",
+			"subheader": "Subtitle",
+			"unit": "EUR",
+			"footer": "Current Quarter",
+			"image": "sap-icon://home-share",
+			"route": "Graph3"
+		}]
+	}, {
+		"groupTitle": "technicalInfo",
+		"expanded": true,
+		"tiles": [{
+			"header": "dataManagement",
+			"subheader": "Subtitle",
+			"unit": "EUR",
+			"footer": "Current Quarter",
+			"image": "sap-icon://home-share",
+			"route": "ManageData"
+		}, {
+			"header": "projectDetails",
+			"subheader": "Subtitle",
+			"unit": "EUR",
+			"footer": "Current Quarter",
+			"image": "sap-icon://home-share",
+			"route": "ProjectDetails"
+		}, {
+			"header": "references",
+			"subheader": "Subtitle",
+			"unit": "EUR",
+			"footer": "Current Quarter",
+			"image": "sap-icon://home-share",
+			"route": "References"
+		}]
+	}]
+}

@@ -1,11 +1,18 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"elte/Grafmodellezo/controller/BaseController"
+], function (BaseController) {
 	"use strict";
 
-	return Controller.extend("elte.Grafmodellezo.controller.Main", {
+	return BaseController.extend("elte.Grafmodellezo.controller.Main", {
 		onInit: function () {
-
+		},
+		
+		onNavBack: function(oEvent) {
+			var oHistory = window.history;
+			var iLength = oHistory.length;
+			if(iLength > 1) {
+				oHistory.go(-1);
+			}
 		}
 	});
 });
