@@ -10,8 +10,17 @@
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"sourceTemplate": {
-			"id": "ui5template.basicSAPUI5ApplicationProject",
-			"version": "1.40.12"
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"twitter.xsodata": {
+				"uri": "/public/grafmodellezo/twitter/service/twitter.xsodata/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/twitter.xsodata/metadata.xml"
+				}
+			}
 		}
 	},
 	"sap.ui": {
@@ -56,6 +65,16 @@
 				"settings": {
 					"bundleName": "elte.Grafmodellezo.i18n.i18n"
 				}
+			},
+			"Twitter": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "twitter.xsodata",
+				"preload": true
 			}
 		},
 		"resources": {
@@ -161,5 +180,9 @@
 				}
 			}
 		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
 	}
 }

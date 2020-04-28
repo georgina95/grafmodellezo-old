@@ -36,6 +36,39 @@
         "entryPath": "/test-resources"
       },
       "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/grafmodellezo/hogwarts/service",
+      "target": {
+        "type": "destination",
+        "name": "Grafmodellezo",
+        "entryPath": "/grafmodellezo/hogwarts/service"
+      },
+      "description": "Service from the Grafmodellezo db"
+    },
+    {
+      "path": "/grafmodellezo/hogwarts/service/users.xsodata",
+      "target": {
+        "type": "destination",
+        "name": "Grafmodellezo_users"
+      },
+      "description": "teszt"
+    },
+    {
+      "path": "/grafmodellezo/hogwarts/service/hogwarts.xsodata",
+      "target": {
+        "type": "destination",
+        "name": "Grafmodellezo_hogwarts"
+      },
+      "description": "teszt"
+    },
+    {
+      "path": "/public/grafmodellezo/twitter/service/twitter.xsodata",
+      "target": {
+        "type": "destination",
+        "name": "Grafmodellezo_twitter"
+      },
+      "description": "teszt"
     }
   ],
   "sendWelcomeFileRedirect": true
