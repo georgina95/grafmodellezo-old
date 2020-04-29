@@ -1,0 +1,23 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="elte.Grafmodellezo.controller.Home"
+	class="sapUiSizeCompact" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showHeader="false" showFooter="false" showSubHeader="false"  class="sapUiContentPadding">
+		<content>
+			<VBox items="{Settings>/homeTiles}" width="100%" class="sapUiTinyMarginTop">
+				<items>
+					<VBox width="100%" class="sapUiMediumMarginBottom">
+						<Title text="{path: 'Settings>groupTitle', formatter: '.getTranslation'}"/>
+						<HBox items="{Settings>tiles}" width="100%">
+							<items>
+								<GenericTile class="sapUiMediumMarginEnd" header="{path: 'Settings>header', formatter: '.getTranslation'}" subheader="{Settings>subheader}" press="press">
+									<TileContent unit="{Settings>unit}" footer="{Settings>footer}">
+										<ImageContent src="{Settings>image}"/>
+									</TileContent>
+								</GenericTile>
+							</items>
+						</HBox>
+					</VBox>
+				</items>
+			</VBox>
+		</content>
+	</Page>
+</mvc:View>

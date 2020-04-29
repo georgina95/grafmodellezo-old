@@ -25,6 +25,23 @@ sap.ui.define([
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
+
+			//create a model to handle the layout settings
+			var oModel = new sap.ui.model.json.JSONModel();
+				oModel.loadData("projectSettings.json");
+			this.setModel(oModel, "Settings");
+		},
+		
+		getContentDensityClass : function () {
+			if (!this._sContentDensityClass) {
+				if (!Device.support.touch) {
+					this._sContentDensityClass = "sapUiSizeCompact";
+				} else {
+					this._sContentDensityClass = "sapUiSizeCozy";
+				}
+			}
+			return this._sContentDensityClass;
 		}
+
 	});
 });

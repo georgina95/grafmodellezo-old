@@ -1,0 +1,19 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+			Namespace="public.grafmodellezo.twitter.service.twitter">
+			<EntityType Name="tweetsType">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="CREATED_AT" Type="Edm.DateTime"/><Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="255"/><Property Name="PLACE_ID" Type="Edm.String" MaxLength="255"/><Property Name="TEXT" Type="Edm.String" MaxLength="5000"/><Property Name="TRUNCATED" Type="Edm.String" MaxLength="8"/><Property Name="USER_ID" Type="Edm.String" MaxLength="255"/></EntityType>
+			<EntityType Name="usersType">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="CREATED_AT" Type="Edm.DateTime"/><Property Name="DESCRIPTION" Type="Edm.String" MaxLength="5000"/><Property Name="FOLLOWERS_COUNT" Type="Edm.Int32"/><Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="255"/><Property Name="LOCATION" Type="Edm.String" MaxLength="255"/><Property Name="NAME" Type="Edm.String" MaxLength="255"/><Property Name="SCREEN_NAME" Type="Edm.String" MaxLength="255"/><Property Name="STATUSES_COUNT" Type="Edm.Int32"/></EntityType>
+			<EntityType Name="placesType">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="COUNTRY" Type="Edm.String" MaxLength="255"/><Property Name="COUNTRY_CODE" Type="Edm.String" MaxLength="20"/><Property Name="FULL_NAME" Type="Edm.String" MaxLength="255"/><Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="255"/><Property Name="NAME" Type="Edm.String" MaxLength="255"/><Property Name="PLACE_TYPE" Type="Edm.String" MaxLength="255"/></EntityType>
+			<EntityType Name="hashtagsType">
+				<Key><PropertyRef Name="UUID"/></Key><Property Name="CREATED_AT" Type="Edm.DateTime"/><Property Name="TEXT" Type="Edm.String" MaxLength="255"/><Property Name="USER_ID" Type="Edm.String" MaxLength="255"/><Property Name="UUID" Type="Edm.Binary" Nullable="false"/></EntityType>
+			<EntityType Name="usermentionsType">
+				<Key><PropertyRef Name="UUID"/></Key><Property Name="CREATED_AT" Type="Edm.DateTime"/><Property Name="MENTIONED_USER_ID" Type="Edm.String" MaxLength="255"/><Property Name="USER_ID" Type="Edm.String" MaxLength="255"/><Property Name="UUID" Type="Edm.Binary" Nullable="false"/></EntityType>
+			<EntityContainer Name="twitter" m:IsDefaultEntityContainer="true"><EntitySet Name="tweets" EntityType="public.grafmodellezo.twitter.service.twitter.tweetsType"/><EntitySet Name="users" EntityType="public.grafmodellezo.twitter.service.twitter.usersType"/><EntitySet Name="places" EntityType="public.grafmodellezo.twitter.service.twitter.placesType"/><EntitySet Name="hashtags" EntityType="public.grafmodellezo.twitter.service.twitter.hashtagsType"/><EntitySet Name="usermentions" EntityType="public.grafmodellezo.twitter.service.twitter.usermentionsType"/></EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

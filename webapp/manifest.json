@@ -10,11 +10,19 @@
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"sourceTemplate": {
-			"id": "ui5template.basicSAPUI5ApplicationProject",
-			"version": "1.40.12"
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"twitter.xsodata": {
+				"uri": "/public/grafmodellezo/twitter/service/twitter.xsodata/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/twitter.xsodata/metadata.xml"
+				}
+			}
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -31,7 +39,6 @@
 			"phone": true
 		}
 	},
-
 	"sap.ui5": {
 		"flexEnabled": false,
 		"rootView": {
@@ -58,6 +65,16 @@
 				"settings": {
 					"bundleName": "elte.Grafmodellezo.i18n.i18n"
 				}
+			},
+			"Twitter": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "twitter.xsodata",
+				"preload": true
 			}
 		},
 		"resources": {
@@ -71,24 +88,101 @@
 				"viewType": "XML",
 				"async": true,
 				"viewPath": "elte.Grafmodellezo.view",
-				"controlAggregation": "pages",
-				"controlId": "app",
-				"clearControlAggregation": false
+				"controlAggregation": "",
+				"controlId": "layoutMain",
+				"clearControlAggregation": true,
+				"bypassed": {
+					"target": []
+				}
 			},
 			"routes": [{
-				"name": "RouteMain",
-				"pattern": "RouteMain",
-				"target": ["TargetMain"]
+				"name": "Home",
+				"pattern": "",
+				"target": ["Home"]
+			}, {
+				"name": "ManageData",
+				"pattern": "ManageData",
+				"target": ["ManageData"]
+			}, {
+				"name": "ManageDataDetail",
+				"pattern": "ManageData/{id}",
+				"target": ["ManageData", "ManageDataDetail"]
+			}, {
+				"name": "Graph1",
+				"pattern": "Graph1",
+				"target": ["Graph1"]
+			}, {
+				"name": "Graph2",
+				"pattern": "Graph2",
+				"target": ["Graph2"]
+			}, {
+				"name": "Graph3",
+				"pattern": "Graph3",
+				"target": ["Graph3"]
+			}, {
+				"name": "ProjectDetails",
+				"pattern": "ProjectDetails",
+				"target": ["ProjectDetails"]
+			}, {
+				"name": "References",
+				"pattern": "References",
+				"target": ["References"]
 			}],
 			"targets": {
-				"TargetMain": {
+				"Home": {
+					"viewType": "XML",
+					"viewName": "Home",
+					"controlAggregation": "beginColumnPages"
+				},
+				"ManageData": {
+					"viewType": "XML",
+					"viewName": "ManageData",
+					"controlAggregation": "beginColumnPages",
+					"viewPath": "elte.Grafmodellezo.view.dataManagement"
+				},
+				"ManageDataDetail": {
 					"viewType": "XML",
 					"transition": "slide",
 					"clearControlAggregation": false,
-					"viewId": "Main",
-					"viewName": "Main"
+					"viewName": "ManageDataDetail",
+					"controlAggregation": "midColumnPages",
+					"viewPath": "elte.Grafmodellezo.view.dataManagement"
+				},
+				"Graph1": {
+					"viewType": "XML",
+					"viewName": "Graph1",
+					"controlAggregation": "beginColumnPages",
+					"viewPath": "elte.Grafmodellezo.view.graphs"
+				},
+				"Graph2": {
+					"viewType": "XML",
+					"viewName": "Graph2",
+					"controlAggregation": "beginColumnPages",
+					"viewPath": "elte.Grafmodellezo.view.graphs"
+				},
+				"Graph3": {
+					"viewType": "XML",
+					"viewName": "Graph3",
+					"controlAggregation": "beginColumnPages",
+					"viewPath": "elte.Grafmodellezo.view.graphs"
+				},
+				"ProjectDetails": {
+					"viewType": "XML",
+					"viewName": "ProjectDetails",
+					"controlAggregation": "beginColumnPages",
+					"viewPath": "elte.Grafmodellezo.view.technical"
+				},
+				"References": {
+					"viewType": "XML",
+					"viewName": "References",
+					"controlAggregation": "beginColumnPages",
+					"viewPath": "elte.Grafmodellezo.view.technical"
 				}
 			}
 		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
 	}
 }
