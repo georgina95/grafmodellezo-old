@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" >
+	<List id="usermentionsList">
+		<items>
+			<ObjectListItem
+				title="Mention1" />
+			<ObjectListItem
+				title="Mention2" />
+			<ObjectListItem
+				title="Mention3" />
+			
+		</items>
+	</List>
+</core:FragmentDefinition>

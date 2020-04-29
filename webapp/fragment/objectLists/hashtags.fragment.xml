@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" >
+	<List id="hashtagsList">
+		<items>
+			<ObjectListItem
+				title="Hashtag1" />
+			<ObjectListItem
+				title="Hashtag2" />
+			<ObjectListItem
+				title="Hashtag3" />
+			
+		</items>
+	</List>
+</core:FragmentDefinition>

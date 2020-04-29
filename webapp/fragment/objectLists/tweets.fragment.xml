@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" >
+	<List id="tweetsList">
+		<items>
+			<ObjectListItem
+				title="Tweet1" />
+			<ObjectListItem
+				title="Tweet2" />
+			<ObjectListItem
+				title="Tweet3" />
+			
+		</items>
+	</List>
+</core:FragmentDefinition>
