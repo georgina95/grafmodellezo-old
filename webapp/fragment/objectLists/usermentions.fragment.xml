@@ -1,13 +1,16 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" >
-	<List id="usermentionsList">
+	<List id="usermentionsList" items="{Objects>/usermentions}" noDataText="{i18n>refineFilters}">
+		<headerToolbar></headerToolbar>
 		<items>
 			<ObjectListItem
-				title="Mention1" />
-			<ObjectListItem
-				title="Mention2" />
-			<ObjectListItem
-				title="Mention3" />
-			
+				title="{Objects>LINK_TO_MENTIONED_USER/NAME}"
+				type="Active" 
+				press="onObjectPress"
+				number=""
+				numberUnit="">
+				<ObjectAttribute title="{i18n>created_at}" text="{Objects>CREATED_AT}"/>
+				<ObjectAttribute title="{i18n>creator}" text="{Objects>LINK_TO_CREATOR_USER/NAME}"/>
+			</ObjectListItem>
 		</items>
 	</List>
 </core:FragmentDefinition>

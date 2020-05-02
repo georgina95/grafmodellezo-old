@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:custom="elte.Grafmodellezo.control">
+	<!-- HASHTAGS -->
+	<fb:FilterGroupItem groupName="hashtags" groupTitle="{i18n>hashtags}" name="created_at" label="{i18n>created_at}" labelTooltip=""
+		visibleInFilterBar="true" visible="{= %{Technical>/current_type} === 'hashtags'}">
+		<fb:control>
+			<DateRangeSelection 
+				dateValue="{Technical>/filterBar/hashtags/created_at/key1}"
+				secondDateValue="{Technical>/filterBar/hashtags/created_at/key2}" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="hashtags" groupTitle="{i18n>hashtags}" name="user_id" label="{i18n>user_id}" labelTooltip="" visibleInFilterBar="true"
+		visible="{= %{Technical>/current_type} === 'hashtags'}">
+		<fb:control>
+			<Input textFormatMode="KeyValue" 
+				value="{Technical>/filterBar/hashtags/user_id/value1}" selectedKey="{Technical>/filterBar/hashtags/user_id/key1}"
+				valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onValueHelpHashtagUser" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="hashtags" groupTitle="{i18n>hashtags}" name="text" label="{i18n>text}" labelTooltip=""
+		visibleInFilterBar="true" visible="{= %{Technical>/current_type} === 'hashtags'}">
+		<fb:control>
+			<Input type="Text" value="{Technical>/filterBar/hashtags/text/key1}" />
+		</fb:control>
+	</fb:FilterGroupItem>
+</core:FragmentDefinition>

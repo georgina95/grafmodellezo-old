@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="valueHelpDialog"
+		title="{i18n>selection}"
+		search="onSearchValueHelp"
+		confirm="onConfirmValueHelp"
+		cancel="onCancelValueHelp"
+		multiSelect="false"
+		rememberSelections="false">
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:custom="elte.Grafmodellezo.control">
+	<!-- PLACES -->
+	<fb:FilterGroupItem groupName="places" groupTitle="{i18n>places}" name="id" label="{i18n>id}" labelTooltip="" visibleInFilterBar="true"
+		visible="{= %{Technical>/current_type} === 'places'}">
+		<fb:control>
+			<Input type="Text" value="{Technical>/filterBar/places/id/key1}" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="places" groupTitle="{i18n>places}" name="name" label="{i18n>name}" labelTooltip="" visibleInFilterBar="true"
+		visible="{= %{Technical>/current_type} === 'places'}">
+		<fb:control>
+			<Input type="Text" value="{Technical>/filterBar/places/name/key1}" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="places" groupTitle="{i18n>places}" name="full_name" label="{i18n>full_name}" labelTooltip="" visibleInFilterBar="true"
+		visible="{= %{Technical>/current_type} === 'places'}">
+		<fb:control>
+			<Input type="Text" value="{Technical>/filterBar/places/full_name/key1}" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="places" groupTitle="{i18n>places}" name="country" label="{i18n>country}" labelTooltip="" visibleInFilterBar="true"
+		visible="{= %{Technical>/current_type} === 'places'}">
+		<fb:control>
+			<Input textFormatMode="KeyValue" 
+				value="{Technical>/filterBar/places/country/value1}" selectedKey="{Technical>/filterBar/places/country/key1}"
+				valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onValueHelpCountry" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="places" groupTitle="{i18n>places}" name="place_type" label="{i18n>place_type}" labelTooltip="" visibleInFilterBar="true"
+		visible="{= %{Technical>/current_type} === 'places'}">
+		<fb:control>
+			<ComboBox items="{Technical>/place_types}" selectedKey="{Technical>/filterBar/places/place_type/key1}">
+				<items>
+					<core:Item text="{Technical>name}" key="{Technical>name}" />
+				</items>
+			</ComboBox>
+		</fb:control>
+	</fb:FilterGroupItem>
+	
+</core:FragmentDefinition>

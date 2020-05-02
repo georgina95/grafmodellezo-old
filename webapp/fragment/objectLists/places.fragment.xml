@@ -1,13 +1,19 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" >
-	<List id="placesList">
+	<List id="placesList" items="{Objects>/places}" noDataText="{i18n>refineFilters}">
+		<headerToolbar></headerToolbar>
 		<items>
 			<ObjectListItem
-				title="Place1" />
-			<ObjectListItem
-				title="Place2" />
-			<ObjectListItem
-				title="Place3" />
-			
+				intro="{Objects>ID}"
+				title="{ path: 'Objects>FULL_NAME', formatter: '.getShortString' }"
+				type="Active" 
+				press="onObjectPress"
+				number=""
+				numberUnit="">
+				<firstStatus>
+					<ObjectStatus title="{i18n>type}" text="{Objects>PLACE_TYPE}" />
+				</firstStatus>
+				<ObjectAttribute title="{i18n>country}" text="{Objects>COUNTRY}"/>
+			</ObjectListItem>
 		</items>
 	</List>
 </core:FragmentDefinition>

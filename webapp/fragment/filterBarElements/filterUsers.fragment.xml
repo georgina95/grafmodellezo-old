@@ -1,0 +1,62 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:custom="elte.Grafmodellezo.control">
+	<!-- USERS -->
+	<fb:FilterGroupItem groupName="users" groupTitle="{i18n>users}" name="created_at" label="{i18n>created_at}" labelTooltip=""
+		visibleInFilterBar="true" visible="{= %{Technical>/current_type} === 'users'}">
+		<fb:control>
+			<DateRangeSelection 
+				dateValue="{Technical>/filterBar/users/created_at/key1}"
+				secondDateValue="{Technical>/filterBar/users/created_at/key2}" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="users" groupTitle="{i18n>users}" name="id" label="{i18n>id}" labelTooltip="" visibleInFilterBar="true"
+		visible="{= %{Technical>/current_type} === 'users'}">
+		<fb:control>
+			<Input type="Text" value="{Technical>/filterBar/users/id/key1}" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="users" groupTitle="{i18n>users}" name="description" label="{i18n>description}" labelTooltip=""
+		visibleInFilterBar="true" visible="{= %{Technical>/current_type} === 'users'}">
+		<fb:control>
+			<Input type="Text" value="{Technical>/filterBar/users/description/key1}" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="users" groupTitle="{i18n>users}" name="followers_count" label="{i18n>followers_count}" labelTooltip=""
+		visibleInFilterBar="true" visible="{= %{Technical>/current_type} === 'users'}">
+		<fb:control>
+			<RangeSlider showAdvancedTooltip="true" enableTickmarks="true" showHandleTooltip="false" inputsAsTooltips="true"
+				value="{Technical>/filterBar/users/followers_count/key1}" value2="{Technical>/filterBar/users/followers_count/key2}"
+				min="0" max="{Technical>/max_followers}">
+				<ResponsiveScale/>
+			</RangeSlider>
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="users" groupTitle="{i18n>users}" name="location" label="{i18n>location}" labelTooltip=""
+		visibleInFilterBar="true" visible="{= %{Technical>/current_type} === 'users'}">
+		<fb:control>
+			<Input type="Text" value="{Technical>/filterBar/users/location/key1}" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="users" groupTitle="{i18n>users}" name="name" label="{i18n>name}" labelTooltip="" visibleInFilterBar="true"
+		visible="{= %{Technical>/current_type} === 'users'}">
+		<fb:control>
+			<Input type="Text" value="{Technical>/filterBar/users/name/key1}" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="users" groupTitle="{i18n>users}" name="screen_name" label="{i18n>screen_name}" labelTooltip=""
+		visibleInFilterBar="true" visible="{= %{Technical>/current_type} === 'users'}">
+		<fb:control>
+			<Input type="Text" value="{Technical>/filterBar/users/screen_name/key1}" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="users" groupTitle="{i18n>users}" name="statuses_count" label="{i18n>statuses_count}" labelTooltip=""
+		visibleInFilterBar="true" visible="{= %{Technical>/current_type} === 'users'}">
+		<fb:control>
+			<RangeSlider showAdvancedTooltip="true" enableTickmarks="true" showHandleTooltip="false" inputsAsTooltips="true"
+				value="{Technical>/filterBar/users/statuses_count/key1}" value2="{Technical>/filterBar/users/statuses_count/key2}"
+				min="0" max="{Technical>/max_statuses}" >
+				<ResponsiveScale/>
+			</RangeSlider>
+		</fb:control>
+	</fb:FilterGroupItem>
+</core:FragmentDefinition>

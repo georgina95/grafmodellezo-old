@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:custom="elte.Grafmodellezo.control">
+	<fb:FilterBar reset="onReset" id="filterBar" search="onFilter" useToolbar="false" showFilterConfiguration="true">
+		<fb:filterGroupItems>
+			<!-- TWEET -->
+			<core:Fragment fragmentName="elte.Grafmodellezo.fragment.filterBarElements.filterTweets" type="XML" />
+			
+			<!-- USER -->
+			<core:Fragment fragmentName="elte.Grafmodellezo.fragment.filterBarElements.filterUsers" type="XML" />
+			
+			<!-- PLACE -->
+			<core:Fragment fragmentName="elte.Grafmodellezo.fragment.filterBarElements.filterPlaces" type="XML" />
+			
+			<!-- HASHTAG -->
+			<core:Fragment fragmentName="elte.Grafmodellezo.fragment.filterBarElements.filterHashtags" type="XML" />
+			
+			<!-- USERMENTION -->
+			<core:Fragment fragmentName="elte.Grafmodellezo.fragment.filterBarElements.filterUsermentions" type="XML" />
+			
+		</fb:filterGroupItems>
+	</fb:FilterBar>
+</core:FragmentDefinition>

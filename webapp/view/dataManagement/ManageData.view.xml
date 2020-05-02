@@ -1,4 +1,4 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f"
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" 
 	controllerName="elte.Grafmodellezo.controller.dataManagement.ManageData" xmlns:html="http://www.w3.org/1999/xhtml">
 	<f:DynamicPage id="masterPage" toggleHeaderOnTitleClick="false" class="sapUiNoContentPadding">
 		<f:title>
@@ -11,17 +11,20 @@
 		<f:header>
 			<f:DynamicPageHeader>
 				<f:content>
-					<Toolbar>
-						<SegmentedButton id="objectTypeSelectorButton" selectedKey="tweets" width="100%" selectionChange="onObjectTypeSelectionChange">
-							<items>
-								<SegmentedButtonItem text="{i18n>tweets}" key="tweets"/>
-								<SegmentedButtonItem text="{i18n>users}" key="users"/>
-								<SegmentedButtonItem text="{i18n>places}" key="places"/>
-								<SegmentedButtonItem text="{i18n>hashtags}" key="hashtags"/>
-								<SegmentedButtonItem text="{i18n>usermentions}" key="usermentions"/>
-							</items>
-						</SegmentedButton>
-					</Toolbar>
+					<VBox width="100%">
+						<Toolbar class="sapUiSmallMarginBottom">
+							<SegmentedButton id="objectTypeSelectorButton" selectedKey="tweets" width="100%" selectionChange="onObjectTypeSelectionChange">
+								<items>
+									<SegmentedButtonItem text="{i18n>tweets}" key="tweets"/>
+									<SegmentedButtonItem text="{i18n>users}" key="users"/>
+									<SegmentedButtonItem text="{i18n>places}" key="places"/>
+									<SegmentedButtonItem text="{i18n>hashtags}" key="hashtags"/>
+									<SegmentedButtonItem text="{i18n>usermentions}" key="usermentions"/>
+								</items>
+							</SegmentedButton>
+						</Toolbar>
+						<core:Fragment fragmentName="elte.Grafmodellezo.fragment.filterBar" type="XML" />
+					</VBox>
 				</f:content>
 			</f:DynamicPageHeader>
 		</f:header>

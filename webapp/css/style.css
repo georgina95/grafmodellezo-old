@@ -1,1 +1,18 @@
 /* Enter your custom styles here */
+
+
+.myGreen .sapUiIcon {
+	color: #13e527 !important;
+}
+
+.myRed .sapUiIcon {
+	color: red !important;
+}
+
+.myGreen {
+	color: #13e527 !important;
+}
+
+.myRed {
+	color: red !important;
+}

@@ -1,13 +1,17 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" >
-	<List id="usersList">
+	<List id="usersList" items="{Objects>/users}" noDataText="{i18n>refineFilters}">
+		<headerToolbar></headerToolbar>
 		<items>
-			<ObjectListItem
-				title="User1" />
-			<ObjectListItem
-				title="User2" />
-			<ObjectListItem
-				title="User3" />
-			
+			<ObjectListItem 
+				intro="{Objects>ID}"
+				title="{ path: 'Objects>NAME' }"
+				type="Active" 
+				press="onObjectPress"
+				number="{Objects>STATUSES_COUNT}"
+				numberUnit="{i18n>statuses_count}">
+				<ObjectAttribute title="{i18n>followers_count}" text="{Objects>FOLLOWERS_COUNT}"/>
+				<ObjectAttribute title="{i18n>location}" text="{Objects>LOCATION}"/>
+			</ObjectListItem>
 		</items>
 	</List>
 </core:FragmentDefinition>

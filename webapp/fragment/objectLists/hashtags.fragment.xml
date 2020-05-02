@@ -1,13 +1,15 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" >
-	<List id="hashtagsList">
+	<List id="hashtagsList" items="{Objects>/hashtags}" noDataText="{i18n>refineFilters}">
+		<headerToolbar></headerToolbar>
 		<items>
 			<ObjectListItem
-				title="Hashtag1" />
-			<ObjectListItem
-				title="Hashtag2" />
-			<ObjectListItem
-				title="Hashtag3" />
-			
+				title="{Objects>TEXT}"
+				type="Active" 
+				press="onObjectPress"
+				number=""
+				numberUnit="">
+				<ObjectAttribute title="{i18n>created_at}" text="{Objects>CREATED_AT}"/>
+			</ObjectListItem>
 		</items>
 	</List>
 </core:FragmentDefinition>

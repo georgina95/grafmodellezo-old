@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:custom="elte.Grafmodellezo.control">
+	<!-- HASHTAGS -->
+	<fb:FilterGroupItem groupName="usermentions" groupTitle="{i18n>usermentions}" name="created_at" label="{i18n>created_at}" labelTooltip=""
+		visibleInFilterBar="true" visible="{= %{Technical>/current_type} === 'usermentions'}">
+		<fb:control>
+			<DateRangeSelection 
+				dateValue="{Technical>/filterBar/usermentions/created_at/key1}"
+				secondDateValue="{Technical>/filterBar/usermentions/created_at/key2}" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="usermentions" groupTitle="{i18n>usermentions}" name="mentioned_user_id" label="{i18n>mentioned_user_id}" labelTooltip="" visibleInFilterBar="true"
+		visible="{= %{Technical>/current_type} === 'usermentions'}">
+		<fb:control>
+			<Input textFormatMode="KeyValue" 
+				value="{Technical>/filterBar/usermentions/mantioned_user_id/value1}" selectedKey="{Technical>/filterBar/usermentions/mentioned_user_id/key1}"
+				valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onValueHelpMentionedUser" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="usermentions" groupTitle="{i18n>usermentions}" name="user_id" label="{i18n>creator}" labelTooltip="" visibleInFilterBar="true"
+		visible="{= %{Technical>/current_type} === 'usermentions'}">
+		<fb:control>
+			<Input textFormatMode="KeyValue" 
+				value="{Technical>/filterBar/usermentions/user_id/value1}" selectedKey="{Technical>/filterBar/usermentions/user_id/key1}"
+				valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onValueHelpMentionerUser" />
+		</fb:control>
+	</fb:FilterGroupItem>
+</core:FragmentDefinition>

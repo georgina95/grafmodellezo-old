@@ -78,9 +78,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -95,39 +97,65 @@
 					"target": []
 				}
 			},
-			"routes": [{
-				"name": "Home",
-				"pattern": "",
-				"target": ["Home"]
-			}, {
-				"name": "ManageData",
-				"pattern": "ManageData",
-				"target": ["ManageData"]
-			}, {
-				"name": "ManageDataDetail",
-				"pattern": "ManageData/{id}",
-				"target": ["ManageData", "ManageDataDetail"]
-			}, {
-				"name": "Graph1",
-				"pattern": "Graph1",
-				"target": ["Graph1"]
-			}, {
-				"name": "Graph2",
-				"pattern": "Graph2",
-				"target": ["Graph2"]
-			}, {
-				"name": "Graph3",
-				"pattern": "Graph3",
-				"target": ["Graph3"]
-			}, {
-				"name": "ProjectDetails",
-				"pattern": "ProjectDetails",
-				"target": ["ProjectDetails"]
-			}, {
-				"name": "References",
-				"pattern": "References",
-				"target": ["References"]
-			}],
+			"routes": [
+				{
+					"name": "Home",
+					"pattern": "",
+					"target": [
+						"Home"
+					]
+				},
+				{
+					"name": "ManageData",
+					"pattern": "ManageData",
+					"target": [
+						"ManageData"
+					]
+				},
+				{
+					"name": "ManageDataDetail",
+					"pattern": "ManageData/{id}",
+					"target": [
+						"ManageData",
+						"ManageDataDetail"
+					]
+				},
+				{
+					"name": "Graph1",
+					"pattern": "Graph1",
+					"target": [
+						"Graph1"
+					]
+				},
+				{
+					"name": "Graph2",
+					"pattern": "Graph2",
+					"target": [
+						"Graph2"
+					]
+				},
+				{
+					"name": "Graph3",
+					"pattern": "Graph3",
+					"target": [
+						"Graph3"
+					]
+				},
+				{
+					"name": "ProjectDetails",
+					"pattern": "ProjectDetails",
+					"target": [
+						"ProjectDetails"
+					]
+				},
+				{
+					"name": "References",
+					"pattern": "References",
+					"target": [
+						"References"
+					]
+				}
+			],
 			"targets": {
 				"Home": {
 					"viewType": "XML",
@@ -177,6 +205,42 @@
 					"viewName": "References",
 					"controlAggregation": "beginColumnPages",
 					"viewPath": "elte.Grafmodellezo.view.technical"
+				},
+				"DetailTweet": {
+					"viewType": "XML",
+					"viewName": "DetailTweet"
+				},
+				"DetailUser": {
+					"viewType": "XML",
+					"viewName": "DetailUser"
+				},
+				"DetailPlace": {
+					"viewType": "XML",
+					"viewName": "DetailPlace"
+				},
+				"DetailHashtag": {
+					"viewType": "XML",
+					"viewName": "DetailHashtag"
+				},
+				"DetailHashtags": {
+					"viewType": "XML",
+					"viewName": "DetailHashtags"
+				},
+				"DetailPlaces": {
+					"viewType": "XML",
+					"viewName": "DetailPlaces"
+				},
+				"DetailTweets": {
+					"viewType": "XML",
+					"viewName": "DetailTweets"
+				},
+				"DetailUsers": {
+					"viewType": "XML",
+					"viewName": "DetailUsers"
+				},
+				"DetailUsermentions": {
+					"viewType": "XML",
+					"viewName": "DetailUsermentions"
 				}
 			}
 		}

@@ -1,13 +1,19 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" >
-	<List id="tweetsList">
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core">
+	<List id="tweetsList" items="{Objects>/tweets}" noDataText="{i18n>refineFilters}">
+		<headerToolbar></headerToolbar>
 		<items>
-			<ObjectListItem
-				title="Tweet1" />
-			<ObjectListItem
-				title="Tweet2" />
-			<ObjectListItem
-				title="Tweet3" />
-			
+			<ObjectListItem 
+				intro="{Objects>ID}"
+				title="{ path: 'Objects>TEXT', formatter: '.getShortString' }"
+				type="Active" 
+				press="onObjectPress"
+				number=""
+				numberUnit="">
+				<firstStatus>
+					<ObjectStatus title="{i18n>truncated}" text="{Objects>TRUNCATED}" state="{ path: 'Objects>TRUNCATED', formatter: '.isTruncatedState' }"/>
+				</firstStatus>
+				<ObjectAttribute title="{i18n>created_at}" text="{Objects>CREATED_AT}"/>
+			</ObjectListItem>
 		</items>
 	</List>
 </core:FragmentDefinition>

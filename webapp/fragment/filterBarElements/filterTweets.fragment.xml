@@ -1,0 +1,52 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:custom="elte.Grafmodellezo.control">
+	<!-- TWEET -->
+	<fb:FilterGroupItem groupName="tweet" groupTitle="{i18n>tweet}" name="created_at" label="{i18n>created_at}" labelTooltip=""
+		visibleInFilterBar="true" visible="{= %{Technical>/current_type} === 'tweets'}">
+		<fb:control>
+			<DateRangeSelection 
+				dateValue="{Technical>/filterBar/tweets/created_at/key1}"
+				secondDateValue="{Technical>/filterBar/tweets/created_at/key2}" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="tweet" groupTitle="{i18n>tweet}" name="id" label="{i18n>id}" labelTooltip="" visibleInFilterBar="true"
+		visible="{= %{Technical>/current_type} === 'tweets'}">
+		<fb:control>
+			<Input type="Text" value="{Technical>/filterBar/tweets/id/key1}" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="tweet" groupTitle="{i18n>tweet}" name="place_id" label="{i18n>place}" labelTooltip="" visibleInFilterBar="true"
+		visible="{= %{Technical>/current_type} === 'tweets'}">
+		<fb:control>
+			<Input textFormatMode="KeyValue" 
+				value="{Technical>/filterBar/tweets/place_id/value1}" selectedKey="{Technical>/filterBar/tweets/place_id/key1}" 
+				valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onValueHelpPlace" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="tweet" groupTitle="{i18n>tweet}" name="text" label="{i18n>text}" labelTooltip="" visibleInFilterBar="true"
+		visible="{= %{Technical>/current_type} === 'tweets'}">
+		<fb:control>
+			<Input type="Text" value="{Technical>/filterBar/tweets/text/key1}" />
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="tweet" groupTitle="{i18n>tweet}" name="truncated" label="{i18n>truncated}" labelTooltip=""
+		visibleInFilterBar="true" visible="{= %{Technical>/current_type} === 'tweets'}">
+		<fb:control>
+			<custom:CustomSegmentedButton id="tweetTruncatedSegmentedButton" selectedKey="{Technical>/filterBar/tweets/truncated/key1}">
+				<custom:items>
+					<SegmentedButtonItem icon="sap-icon://accept" key="True" />
+					<SegmentedButtonItem icon="sap-icon://decline" key="False" />
+					<SegmentedButtonItem icon="sap-icon://circle-task-2" key=""/>
+				</custom:items>
+			</custom:CustomSegmentedButton>
+		</fb:control>
+	</fb:FilterGroupItem>
+	<fb:FilterGroupItem groupName="tweet" groupTitle="{i18n>tweet}" name="user_id" label="{i18n>creator}" labelTooltip=""
+		visibleInFilterBar="true" visible="{= %{Technical>/current_type} === 'tweets'}">
+		<fb:control>
+			<Input textFormatMode="KeyValue" 
+				value="{Technical>/filterBar/tweets/user_id/value1}" selectedKey="{Technical>/filterBar/tweets/user_id/key1}"
+				valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onValueHelpUser" />
+		</fb:control>
+	</fb:FilterGroupItem>
+</core:FragmentDefinition>
