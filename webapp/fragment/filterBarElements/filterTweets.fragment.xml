@@ -1,4 +1,4 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar"
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:custom="elte.Grafmodellezo.control">
 	<!-- TWEET -->
 	<fb:FilterGroupItem groupName="tweet" groupTitle="{i18n>tweet}" name="created_at" label="{i18n>created_at}" labelTooltip=""
@@ -32,11 +32,12 @@
 	<fb:FilterGroupItem groupName="tweet" groupTitle="{i18n>tweet}" name="truncated" label="{i18n>truncated}" labelTooltip=""
 		visibleInFilterBar="true" visible="{= %{Technical>/current_type} === 'tweets'}">
 		<fb:control>
-			<custom:CustomSegmentedButton id="tweetTruncatedSegmentedButton" selectedKey="{Technical>/filterBar/tweets/truncated/key1}">
+			<custom:CustomSegmentedButton id="tweetTruncatedSegmentedButton" 
+				selectedArbitraryKey="{Technical>/filterBar/tweets/truncated/key1}" selectedKey="{Technical>/filterBar/tweets/truncated/value1}">
 				<custom:items>
-					<SegmentedButtonItem icon="sap-icon://accept" key="True" />
-					<SegmentedButtonItem icon="sap-icon://decline" key="False" />
-					<SegmentedButtonItem icon="sap-icon://circle-task-2" key=""/>
+					<SegmentedButtonItem icon="sap-icon://accept" key="True" app:key="True" />
+					<SegmentedButtonItem icon="sap-icon://decline" key="False" app:key="False" />
+					<SegmentedButtonItem icon="sap-icon://circle-task-2" key="None" app:key="" />
 				</custom:items>
 			</custom:CustomSegmentedButton>
 		</fb:control>

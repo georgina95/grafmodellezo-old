@@ -58,9 +58,9 @@ sap.ui.define([
 							objectPath: "TEXT"
 						},
 						truncated: {
-							key1: "True",
+							key1: "",
 							operator: "EQ",
-							value1: "",
+							value1: "None",
 							key2: "",
 							value2: "",
 							objectPath: "TRUNCATED"

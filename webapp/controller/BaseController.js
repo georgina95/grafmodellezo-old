@@ -51,6 +51,7 @@ sap.ui.define([
 			MessageToast.show(sErrorMessage);
 		},
 		
+		
 		/** FORMATTERS **/
 		getShortString: function (sString) {
 			if(sString) {
