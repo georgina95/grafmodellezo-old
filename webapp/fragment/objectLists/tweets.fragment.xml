@@ -1,12 +1,11 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core">
-	<List id="tweetsList" items="{Objects>/tweets}" noDataText="{i18n>refineFilters}">
+	<List id="tweetsList" items="{Objects>/tweets}" noDataText="{i18n>refineFilters}" mode="SingleSelectMaster" itemPress="onObjectPress">
 		<headerToolbar></headerToolbar>
 		<items>
 			<ObjectListItem 
 				intro="{Objects>ID}"
 				title="{ path: 'Objects>TEXT', formatter: '.getShortString' }"
-				type="Active" 
-				press="onObjectPress"
+				type="Active"
 				number=""
 				numberUnit="">
 				<firstStatus>

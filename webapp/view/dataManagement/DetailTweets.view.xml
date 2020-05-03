@@ -1,0 +1,147 @@
+<mvc:View xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.uxap" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	displayBlock="true" height="100%" controllerName="elte.Grafmodellezo.controller.dataManagement.DetailTweets">
+	<ObjectPageLayout showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false"
+		headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="{i18n>Tweet} - {Object>/TEXT}" textAlign="Begin" titleStyle="Auto" level="Auto" wrapping="false"/>
+				</expandedHeading>
+				<navigationActions>
+					<m:Button icon="sap-icon://sys-cancel" tooltip="{i18n>cancel}" press="onCloseDetailPage"/>
+				</navigationActions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<l:Grid defaultSpan="XL6 L6 M4 S2">
+				<l:VerticalLayout width="100%">
+					<m:Label width="100%" text="{i18n>id}" labelFor="tweetId"/>
+					<m:Text id="tweetId" text="{Object>/ID}"/>
+				</l:VerticalLayout>
+				<l:VerticalLayout width="100%">
+					<m:Label width="100%" text="{i18n>created_at}" labelFor="createdAt"/>
+					<m:Text id="createdAt" text="{Object>/CREATED_AT}"/>
+				</l:VerticalLayout>
+				<l:VerticalLayout width="100%">
+					<m:Label width="100%" text="{i18n>truncated}" labelFor="truncated"/>
+					<m:Text id="truncated" text="{Object>/TRUNCATED}"/>
+				</l:VerticalLayout>
+			</l:Grid>
+		</headerContent>
+		<sections>
+			<!--TWEET TEXT-->
+			<ObjectPageSection title="{i18n>text}" showTitle="true" titleUppercase="false" titleLevel="H6">
+				<subSections>
+					<ObjectPageSubSection>
+						<m:Text text="{Object>/TEXT}" width="100%" />
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+			<!--  PLACE  -->
+			<ObjectPageSection title="{i18n>place}" showTitle="true" titleUppercase="false" titleLevel="H6">
+				<subSections>
+					<ObjectPageSubSection>
+						<f:Form editable="false">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer title="{i18n>placeDetails}">
+									<f:formElements>
+										<f:FormElement label="{i18n>fullName}">
+											<f:fields>
+												<m:Text text="{Object>/LINK_TO_PLACE/FULL_NAME}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>name}">
+											<f:fields>
+												<m:Text text="{Object>/LINK_TO_PLACE/NAME}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>id}">
+											<f:fields>
+												<m:Text text="{Object>/LINK_TO_PLACE/ID}"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+								<f:FormContainer title="{i18n>location}">
+									<f:formElements>
+										<f:FormElement label="{i18n>country}">
+											<f:fields>
+												<m:Text text="{Object>/LINK_TO_PLACE/COUNTRY} ({Object>/LINK_TO_PLACE/COUNTRY_CODE})"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>placeType}">
+											<f:fields>
+												<m:Text text="{Object>/LINK_TO_PLACE/PLACE_TYPE}"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+			<!--  USER  -->
+			<ObjectPageSection title="{i18n>creator}" showTitle="true" titleUppercase="false" titleLevel="H6">
+				<subSections>
+					<ObjectPageSubSection>
+						<f:Form editable="false">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer title="{i18n>userDetails}">
+									<f:formElements>
+										<f:FormElement label="{i18n>screen_name}">
+											<f:fields>
+												<m:Text text="{Object>/LINK_TO_USER/SCREEN_NAME}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>name}">
+											<f:fields>
+												<m:Text text="{Object>/LINK_TO_USER/NAME}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>description}">
+											<f:fields>
+												<m:Text text="{Object>/LINK_TO_USER/DESCRIPTION}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>id}">
+											<f:fields>
+												<m:Text text="{Object>/LINK_TO_USER/ID}"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+								<f:FormContainer title="{i18n>statistics}">
+									<f:formElements>
+										<f:FormElement label="{i18n>followersCount}">
+											<f:fields>
+												<m:Text text="{Object>/LINK_TO_USER/FOLLOWERS_COUNT}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>statusesCount}">
+											<f:fields>
+												<m:Text text="{Object>/LINK_TO_USER/STATUSES_COUNT}"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+			
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>

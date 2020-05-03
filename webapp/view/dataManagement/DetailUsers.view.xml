@@ -1,0 +1,107 @@
+<mvc:View displayBlock="true" height="100%" xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.uxap" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" controllerName="elte.Grafmodellezo.controller.dataManagement.DetailUsers">
+	<ObjectPageLayout showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false"
+		headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="{i18n>User} - {Object>/NAME}" textAlign="Begin" titleStyle="Auto" level="Auto" wrapping="false"/>
+				</expandedHeading>
+				<navigationActions>
+					<m:Button icon="sap-icon://sys-cancel" tooltip="{i18n>cancel}" press="onCloseDetailPage"/>
+				</navigationActions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<l:Grid defaultSpan="XL6 L6 M4 S2">
+				<l:VerticalLayout width="100%">
+					<m:Label width="100%" text="{i18n>id}" labelFor="tweetId"/>
+					<m:Text id="tweetId" text="{Object>/ID}"/>
+				</l:VerticalLayout>
+				<l:VerticalLayout width="100%">
+					<m:Label width="100%" text="{i18n>created_at}" labelFor="createdAt"/>
+					<m:Text id="createdAt" text="{Object>/CREATED_AT}"/>
+				</l:VerticalLayout>
+				<l:VerticalLayout width="100%">
+					<m:Label width="100%" text="{i18n>location}" labelFor="location"/>
+					<m:Text id="location" text="{Object>/LOCATION}"/>
+				</l:VerticalLayout>
+			</l:Grid>
+		</headerContent>
+		<sections>
+			<!-- DETAILS -->
+			<ObjectPageSection title="{i18n>details}" showTitle="true" titleUppercase="false" titleLevel="H6">
+				<subSections>
+					<ObjectPageSubSection>
+						<f:Form editable="false">
+							<f:layout>
+								<f:ResponsiveGridLayout labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0"
+									emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false"/>
+							</f:layout>
+							<f:formContainers>
+								<f:FormContainer title="{i18n>userDetails}">
+									<f:formElements>
+										<f:FormElement label="{i18n>screen_name}">
+											<f:fields>
+												<m:Text text="{Object>/SCREEN_NAME}" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>name}">
+											<f:fields>
+												<m:Text text="{Object>/NAME}" />
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>description}">
+											<f:fields>
+												<m:Text text="{Object>/DESCRIPTION}" />
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+								<f:FormContainer title="{i18n>statistics}">
+									<f:formElements>
+										<f:FormElement label="{i18n>followersCount}">
+											<f:fields>
+												<m:Text text="{Object>/FOLLOWERS_COUNT}"/>
+											</f:fields>
+										</f:FormElement>
+										<f:FormElement label="{i18n>statusesCount}">
+											<f:fields>
+												<m:Text text="{Object>/STATUSES_COUNT}"/>
+											</f:fields>
+										</f:FormElement>
+									</f:formElements>
+								</f:FormContainer>
+							</f:formContainers>
+						</f:Form>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<!-- TWEETS -->
+			<ObjectPageSection title="{i18n>tweets}" showTitle="true" titleUppercase="false" titleLevel="H6">
+				<subSections>
+					<ObjectPageSubSection>
+						<m:Table items="{Object>/LINK_TO_TWEETS/results}" >
+							<m:columns>
+								<m:Column width="100%">
+									<m:Label text="{i18n>createdAt}" />
+								</m:Column>
+								<m:Column width="100%">
+									<m:Label text="{i18n>text}" />
+								</m:Column>
+							</m:columns>
+							<m:items>
+								<m:ColumnListItem >
+									<m:cells>
+										<m:Text text="{Object>CREATED_AT}" />
+										<m:Text text="{Object>TEXT}" />
+									</m:cells>
+								</m:ColumnListItem>
+							</m:items>
+						</m:Table>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>

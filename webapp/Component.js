@@ -30,6 +30,8 @@ sap.ui.define([
 			var oModel = new sap.ui.model.json.JSONModel();
 				oModel.loadData("projectSettings.json");
 			this.setModel(oModel, "Settings");
+			
+			this._initBusyIndicator();
 		},
 		
 		getContentDensityClass : function () {
@@ -41,6 +43,35 @@ sap.ui.define([
 				}
 			}
 			return this._sContentDensityClass;
+		},
+		
+		
+		/** We will count and handle the busy indicator here
+		 * The visible part will be rendered on the FlexibleColumnLayout
+		 **/
+		_initBusyIndicator: function() {
+			this._iBusyOperations = 0;
+		},
+		
+		
+		/** operation started
+		 * Handle the busy indicator
+		 **/
+		_onOperationStarted: function () {
+			this._iBusyOperations += 1;
+			var bBusy = (this._iBusyOperations > 0) ? true : false;
+
+			this.oContainer.setBusy(bBusy);
+		},
+
+		/** operation ended
+		 * Handle the busy indicator
+		 **/
+		_onOperationEnded: function () {
+			this._iBusyOperations -= 1;
+			var bBusy = (this._iBusyOperations > 0) ? true : false;
+
+			this.oContainer.setBusy(bBusy);
 		}
 
 	});

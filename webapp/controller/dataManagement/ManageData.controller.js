@@ -127,8 +127,6 @@ sap.ui.define([
 			this.getView().setModel(oObjectModel, "Objects");
 			this.getView().setModel(oTechnicalModel, "Technical");
 			this.getView().setModel(oValueHelpModel, "ValueHelp");
-
-			this._iBusyOperations = 0;
 		},
 
 		onRouteMatched: function (oEvent) {
@@ -138,21 +136,8 @@ sap.ui.define([
 			this._initFilterBoundaries();
 			this._initPlaceTypes();
 		},
-
-		onOperationStarted: function () {
-			this._iBusyOperations += 1;
-			var bBusy = (this._iBusyOperations > 0) ? true : false;
-
-			this.getView().setBusy(bBusy);
-		},
-
-		onOperationEnded: function () {
-			this._iBusyOperations -= 1;
-			var bBusy = (this._iBusyOperations > 0) ? true : false;
-
-			this.getView().setBusy(bBusy);
-		},
-
+		
+		
 		/** PRIVATE METHODS **/
 
 		_initPlaceTypes: function () {
@@ -160,8 +145,14 @@ sap.ui.define([
 		},
 
 		_initFilterBoundaries: function () {
-			this.readMaxFollowers();
-			this.readMaxStatuses();
+			var fSuccessReadingMaxFollowers = function(iMax) {
+				this.getView().getModel("Technical").setProperty("/filterBar/users/followers_count/key2", iMax);
+			};
+			var fSuccessReadingMaxStatuses = function(iMax) {
+				this.getView().getModel("Technical").setProperty("/filterBar/users/statuses_count/key2", iMax);
+			};
+			this.readMaxFollowers(fSuccessReadingMaxFollowers);
+			this.readMaxStatuses(fSuccessReadingMaxStatuses);
 		},
 
 		_initSegmentedButtonColors: function () {
@@ -220,9 +211,17 @@ sap.ui.define([
 		},
 
 		/** EVENT HANDLERS **/
-		onPressButton: function (oEvent) {
-			this.navTo("ManageDataDetail", {
-				id: "1234"
+		onObjectPress: function (oEvent) {
+			var sObjectType = this.getView().getModel("Technical").getProperty("/current_type");
+			var sPath = "Detail" + sObjectType[0].toUpperCase() + sObjectType.slice(1, sObjectType.length);
+			
+			var oPressedItem = oEvent.getParameter("listItem");
+			var oBindingContext = oPressedItem.getBindingContext("Objects");
+			var sId = oBindingContext.getModel().getProperty(oBindingContext.getPath()).ID;
+			
+			this.onOperationStarted();
+			this.navTo(sPath, {
+				ID: sId
 			}, true);
 		},
 
@@ -261,11 +260,6 @@ sap.ui.define([
 
 			var oParameters = (sObjectType === "usermentions") ? { "$expand": "LINK_TO_CREATOR_USER,LINK_TO_MENTIONED_USER" } : {};
 			this.readData(sObjectType, aFilters, oParameters);
-		},
-
-		onError: function (oError) {
-			this.onOperationEnded();
-			MessageToast.show("Error");
 		},
 
 		onValueHelpPlace: function (oEvent) {
@@ -398,6 +392,30 @@ sap.ui.define([
 
 			this._valueHelpDialog.open();
 		},
+		
+		onSearchValueHelp: function(oEvent) {
+			var sSearchString = oEvent.getParameter("value");
+			var oDialog = oEvent.getSource();
+			var aItems = oDialog.getItems();
+			
+			if(aItems.length > 0) {
+				var oFilter = new Filter({ filters: [ ], and: false });
+				
+				//Add the filters for the title
+				for(var oPart of aItems[0].getBindingInfo("title").parts){
+					var sPath = oPart.path;
+					oFilter.aFilters.push( new Filter({ path: sPath, operator: FilterOperator.Contains, value1: sSearchString}) );
+				}
+				
+				//Add filters for the description as well
+				for(var oPart of aItems[0].getBindingInfo("description").parts){
+					var sPath = oPart.path;
+					oFilter.aFilters.push( new Filter({ path: sPath, operator: FilterOperator.Contains, value1: sSearchString}) );
+				}
+				
+				oDialog.getBinding("items").filter(oFilter);
+			}
+		},
 
 		onCancelValueHelp: function (oEvent) {},
 
@@ -446,11 +464,15 @@ sap.ui.define([
 
 		},
 
-		readMaxFollowers: function () {
-			var fSuccess = function (oData) {
+		readMaxFollowers: function (fSuccess) {
+			var _fSuccess = function (oData) {
 				var oModel = this.getView().getModel("Technical");
 				oModel.setProperty("/max_followers", oData.results[0].FOLLOWERS_COUNT);
-
+				
+				if(fSuccess) {
+					jQuery.proxy(fSuccess, this, oData.results[0].FOLLOWERS_COUNT)();
+				}
+				
 				this.onOperationEnded();
 			};
 
@@ -459,16 +481,20 @@ sap.ui.define([
 			this.onOperationStarted();
 			var oModel = this.getView().getModel("Twitter");
 			oModel.read("/max_followers", {
-				success: jQuery.proxy(fSuccess, this),
+				success: jQuery.proxy(_fSuccess, this),
 				error: jQuery.proxy(fError, this)
 			});
 		},
 
-		readMaxStatuses: function () {
-			var fSuccess = function (oData) {
+		readMaxStatuses: function (fSuccess) {
+			var _fSuccess = function (oData) {
 				var oModel = this.getView().getModel("Technical");
 				oModel.setProperty("/max_statuses", oData.results[0].STATUSES_COUNT);
-
+				
+				if(fSuccess) {
+					jQuery.proxy(fSuccess, this, oData.results[0].STATUSES_COUNT)();
+				}
+				
 				this.onOperationEnded();
 			};
 
@@ -477,7 +503,7 @@ sap.ui.define([
 			this.onOperationStarted();
 			var oModel = this.getView().getModel("Twitter");
 			oModel.read("/max_statuses", {
-				success: jQuery.proxy(fSuccess, this),
+				success: jQuery.proxy(_fSuccess, this),
 				error: jQuery.proxy(fError, this)
 			});
 		},
@@ -517,21 +543,22 @@ sap.ui.define([
 
 			var fError = this.onError;
 
-			this.onOperationStarted();
-			var oModel = this.getView().getModel("Twitter");
-			oModel.read("/" + sReadPath, {
-				success: jQuery.proxy(_fSuccess, this),
-				error: jQuery.proxy(fError, this)
-			});
+			// In order to save operation times, first check if the required data fields are already filled
+			var aValueHelp = this.getView().getModel("ValueHelp").getProperty("/" + sModelPath);
+			if(!aValueHelp || aValueHelp.length === 0) { 
+				this.onOperationStarted();
+				var oModel = this.getView().getModel("Twitter");
+				oModel.read("/" + sReadPath, {
+					success: jQuery.proxy(_fSuccess, this),
+					error: jQuery.proxy(fError, this)
+				});
+			} else {
+				jQuery.proxy(fSuccess, this)();
+			}
 		},
 
 		/** FORMATTERS **/
-		getShortString: function (sString) {
-			var sShort = sString.slice(0, 80);
-			sShort += (sString.length > 80) ? "..." : "";
-			return sShort;
-		},
-
+		
 		isTruncatedState: function (sTruncated) {
 			var sStatus = (sTruncated === "True") ? "Success" : "Warning";
 			return sStatus;

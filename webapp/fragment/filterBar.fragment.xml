@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar"
 	xmlns:custom="elte.Grafmodellezo.control">
-	<fb:FilterBar reset="onReset" id="filterBar" search="onFilter" useToolbar="false" showFilterConfiguration="true">
+	<fb:FilterBar id="filterBar" search="onFilter" useToolbar="false" showFilterConfiguration="true" deltaVariantMode="false">
 		<fb:filterGroupItems>
 			<!-- TWEET -->
 			<core:Fragment fragmentName="elte.Grafmodellezo.fragment.filterBarElements.filterTweets" type="XML" />
